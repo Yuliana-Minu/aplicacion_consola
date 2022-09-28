@@ -3,7 +3,7 @@ const { resolve } = require('path');
 require('colors');
 
 const mostrarMenu = () => {
-
+    console.clear();
     return new Promise( resolve =>{
         console.clear();
         console.log('================================='.green);

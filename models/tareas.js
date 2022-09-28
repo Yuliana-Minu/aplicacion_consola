@@ -23,6 +23,13 @@ class Tareas{
         return listado;
     }
 
+    cargarTareasFromArr( tareas = []) {
+        tareas.forEach( tareaArreglo  =>{
+            this._listado[tareaArreglo.id] = tareaArreglo;
+        })
+
+    }
+
     crearTarea( desc = ''){
 
         const tarea = new Tarea(desc);
