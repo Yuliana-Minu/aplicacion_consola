@@ -52,7 +52,7 @@ const pausas = [
 const inquirerMenu = async()=> {
     //console.clear();
     console.log('================================='.green);
-    console.log('   Seleccione una Opcion');
+    console.log('   Seleccione una Opcion'.white);
     console.log('=================================\n'.green);
 
     const {opcion }= await inquirer.prompt(preguntas);
@@ -67,15 +67,30 @@ const pausa = async() =>{
 
 }
 
-const leerInput = async() =>{
+const leerInput = async(message) =>{
 
-    console.log('\n');
-    await inquirer.prompt(pausas);
+    const question = [
+        {
+            type: 'input',
+            name: 'desc',
+            message,
+            validate(value){
+                if(value.length === 0){
+                    return 'Por Favor Ingrese un Valor';
+                }
+                return true;
+            }
+        }
+    ];
 
+    const {desc} = await inquirer.prompt(question);
+    return desc;
 }
 
 
 module.exports = {
     inquirerMenu,
-    pausa
+    pausa,
+    leerInput
+
 }
